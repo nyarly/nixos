@@ -20,7 +20,7 @@
 
   boot = {
     # Need 4.6 for offcpuflamegraph
-    kernelPackages = pkgs.linuxPackages_4_9;  
+    kernelPackages = pkgs.linuxPackages_4_9;
 
     # Use the gummiboot efi boot loader.
     loader = {
@@ -35,6 +35,10 @@
   };
 
   networking.hostName = "neumann";
+  networking.extraHosts = ''
+  10.254.134.35 virtualvx.hautelook.net
+  '';
+
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
@@ -53,7 +57,7 @@
 
   services = {
     # probably should reset this
-    journald.rateLimitInterval = "0"; 
+    journald.rateLimitInterval = "0";
     xserver = {
       enable = true;
       exportConfiguration = true;
@@ -87,28 +91,36 @@
       };
     };
 
+    printing = {
+      enable = true;
+    };
+
+    postgresql = {
+      enable = true;
+      enableTCPIP = true;
+    };
 /*
     psd = {
       enable = true;
       users = [ "judson" ];
       resyncTimer = "30min";
     };
-*/
 
     clamav = {
       updater.enable = true;
       daemon.enable = true;
     };
+*/
 
     pcscd.enable = true;
-    locate = { 
+    locate = {
       enable = true;
       localuser = "root";
     };
 
     upower.enable = true;
-  
-    
+
+
     udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="wheel", ATTRS{idVendor}=="1050"
     '';
@@ -124,12 +136,12 @@
     tmux
     tree
     which
-    
+
     # Extra nix tools
     nix-repl
     nox
     patchelf
-    
+
     # Basic X tools
     arandr
     dmenu
@@ -163,7 +175,7 @@
     iotop
     openconnect
     unzip
-    
+
     # Programming
     gnumake
     go
