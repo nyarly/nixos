@@ -1,3 +1,5 @@
 *.sw?
 hardware-configuration.nix
 luks.nix
+configuration.nix
+local-configuration.nix
