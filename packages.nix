@@ -26,6 +26,7 @@
     libnotify
     networkmanagerapplet
     pavucontrol
+    blueman
     rxvt_unicode
     trayer
     urxvt_perls

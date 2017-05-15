@@ -6,6 +6,7 @@
     xserver = {
       enable = true;
       exportConfiguration = true;
+      
       displayManager.sddm = {
         enable = true;
         autoNumlock = true;
@@ -44,6 +45,9 @@
     resyncTimer = "30min";
     };
     */
+    
+    # Name Service Cache Daemon
+    nscd.enable = true;
 
     printing = {
       enable = true;
