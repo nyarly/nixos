@@ -26,9 +26,8 @@
     libnotify
     networkmanagerapplet
     pavucontrol
-    rxvt_unicode
+    rxvt_unicode-with-plugins
     trayer
-    urxvt_perls
     xautolock
     xlsfonts
     xsel

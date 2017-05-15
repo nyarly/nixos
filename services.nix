@@ -63,6 +63,8 @@
 
     upower.enable = true;
 
+    postgresql.enable = true;
+
     udev.extraRules = ''
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="wheel", ATTRS{idVendor}=="1050"
     '';
