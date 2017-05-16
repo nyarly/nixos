@@ -6,7 +6,7 @@
     xserver = {
       enable = true;
       exportConfiguration = true;
-      
+
       displayManager.sddm = {
         enable = true;
         autoNumlock = true;
@@ -45,7 +45,7 @@
     resyncTimer = "30min";
     };
     */
-    
+
     # Name Service Cache Daemon
     nscd.enable = true;
 
@@ -65,12 +65,15 @@
       localuser = "root";
     };
 
-    upower.enable = true;
+    # Default behavior is "HybridSuspend" which would be rad, except that the T460p
+    # has a real hard time waking up.
+    #upower.enable = true;
 
     postgresql.enable = true;
 
     udev.extraRules = ''
-      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="wheel", ATTRS{idVendor}=="1050"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", MODE="0664", GROUP="wheel"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ACTION=="remove", RUN+="/run/current-system/sw/bin/loginctl lock-sessions"
     '';
   };
 }

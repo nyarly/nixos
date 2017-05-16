@@ -7,12 +7,12 @@
   };
   boot.initrd = {
     luks.devices = [
-      # { name = "swap"; device = "/dev/disk/by-uuid/8d951355-45ee-4643-b7a6-4c2e966e5942"; } 
+      # { name = "swap"; device = "/dev/disk/by-uuid/8d951355-45ee-4643-b7a6-4c2e966e5942"; }
       { name = "lvm";  device = "/dev/disk/by-uuid/b08be164-c886-47e1-9ada-757ba4b44b6c"; preLVM = true; }
     ];
     postMountCommands = "cryptsetup luksOpen --key-file /mnt-root/etc/swap.keyfile /dev/sda2 swap";
   };
-  
+
   services.xserver.videoDrivers = [ "nouveau" "intel"  "modesetting" ];
   nixpkgs.config.allowUnfree = true;
   /*
@@ -33,7 +33,7 @@
     (self: super: {
       pulseaudioFull = super.pulseaudioFull.override {
         x11Support = true;
-	bluetoothSupport = true;
+        bluetoothSupport = true;
       };
     })
   ];
