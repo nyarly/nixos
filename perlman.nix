@@ -3,7 +3,16 @@
   # For Radia Perlman, inventor of STP
   networking = {
     hostName = "perlman";
-    extraHosts = "127.0.0.1 perlman";
+    extraHosts = ''
+      127.0.0.1 perlman
+
+      104.236.209.43 ha.pool.sks-keyservers.net
+      208.113.128.181 ha.pool.sks-keyservers.net
+      79.143.214.213 ha.pool.sks-keyservers.net
+      178.32.66.144 ha.pool.sks-keyservers.net
+      67.205.155.18 ha.pool.sks-keyservers.net
+    '';
+
   };
   boot.initrd = {
     luks.devices = [

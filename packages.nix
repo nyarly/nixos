@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 {
+
+  nixpkgs.overlays = [
+    (import overlays/bcc.nix)
+  ];
+
   environment.systemPackages = with pkgs; [
     # Basic user environment
     bc
@@ -40,7 +45,8 @@
     usbutils
 
     # System management
-    linuxPackages.bcc
+    #linuxPackages.bcc
+    bcc
     bind
     btrfs-progs
     bzip2

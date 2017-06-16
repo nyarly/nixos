@@ -1,7 +1,14 @@
 { config, pkgs, ... }:
 {
+
+  systemd.tmpfiles.rules = [
+    "d /tmp 1777 root root 3d"
+    ];
+
+
   # in preference of GPG Agent
   programs.ssh.startAgent = false;
+
   services = {
     xserver = {
       enable = true;
