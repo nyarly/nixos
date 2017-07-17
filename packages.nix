@@ -15,7 +15,7 @@
     tmux
     tree
     which
-    vcsh
+    # vcsh # build broken temporarily - using nixpkgs version in user profile
 
     # Extra nix tools
     nix-repl

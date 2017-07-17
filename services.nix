@@ -36,6 +36,10 @@
       multitouch = {
         enable = true;
         ignorePalm = true;
+        tapButtons = false;
+        additionalOptions = ''
+          Option "ScrollDistance" 50
+        '';
       };
       synaptics = {
         enable = true;
@@ -53,8 +57,11 @@
     };
     */
 
+    illum.enable = true;
+
     # Name Service Cache Daemon
     nscd.enable = true;
+    upower.enable = true;
 
     printing = {
       enable = true;

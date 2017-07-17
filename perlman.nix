@@ -16,27 +16,41 @@
   };
   boot.initrd = {
     luks.devices = [
-      # { name = "swap"; device = "/dev/disk/by-uuid/8d951355-45ee-4643-b7a6-4c2e966e5942"; }
       { name = "lvm";  device = "/dev/disk/by-uuid/b08be164-c886-47e1-9ada-757ba4b44b6c"; preLVM = true; }
     ];
     postMountCommands = "cryptsetup luksOpen --key-file /mnt-root/etc/swap.keyfile /dev/sda2 swap";
   };
 
-  services.xserver.videoDrivers = [ "nouveau" "intel"  "modesetting" ];
+  services = {
+    illum.enable = true;
+
+    xserver = {
+      videoDrivers = [ "nouveau" "intel"  "modesetting" ];
+      multitouch = {
+        enable = true;
+        ignorePalm = true;
+        tapButtons = false;
+      };
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
   /*
   hardware.bumblebee = {
-    enable = true;
-    connectDisplay = true;
+  enable = true;
+  connectDisplay = true;
   };
   */
 
   hardware = {
     bluetooth.enable = true;
     pulseaudio.package = pkgs.pulseaudioFull;
+    trackpoint = {
+      enable = true;
+      emulateWheel = true;
+      # fakeButtons = true;
+    };
   };
-
-  services.illum.enable = true;
 
   nixpkgs.overlays = [
     (self: super: {
