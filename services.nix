@@ -38,7 +38,7 @@
         ignorePalm = true;
         tapButtons = false;
         additionalOptions = ''
-          Option "ScrollDistance" 50
+          Option "ScrollDistance" "50"
         '';
       };
       synaptics = {
