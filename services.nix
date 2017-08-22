@@ -9,6 +9,8 @@
   # in preference of GPG Agent
   programs.ssh.startAgent = false;
 
+  virtualisation.virtualbox.host.enable = true;
+
   services = {
     xserver = {
       enable = true;
