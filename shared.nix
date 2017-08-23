@@ -56,6 +56,6 @@
     isNormalUser = true;
     uid = 1000;
     shell = "/run/current-system/sw/bin/fish";
-    extraGroups = [ "wheel" "audio" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "audio" "networkmanager" "docker" "vboxusers" ];
   };
 }
