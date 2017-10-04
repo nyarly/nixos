@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
 
   systemd.tmpfiles.rules = [
@@ -63,6 +63,7 @@
 
     # Name Service Cache Daemon
     nscd.enable = true;
+
     upower.enable = true;
 
     printing = {
@@ -76,14 +77,13 @@
 
     # Smartcards
     pcscd.enable = true;
+
     locate = {
       enable = true;
       localuser = "root";
+      # the default findutils is torturous
+      locate = (lib.hiPrio pkgs.mlocate);
     };
-
-    # Default behavior is "HybridSuspend" which would be rad, except that the T460p
-    # has a real hard time waking up.
-    #upower.enable = true;
 
     postgresql.enable = true;
 

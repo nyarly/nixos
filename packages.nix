@@ -9,34 +9,24 @@
     # Basic user environment
     bc
     chromium
+    direnv
+    dynamic-colors
+    fasd
     fish
+    fzf
     git
     neovim
+    ripgrep
     tmux
     tree
+    # vcsh # build was broken in NixOS 17.03
     which
-    # vcsh # build broken temporarily - using nixpkgs version in user profile
 
     # Extra nix tools
+    nix-prefetch-scripts
     nix-repl
     nox
     patchelf
-
-    # Basic X tools
-    arandr
-    dmenu
-    dunst
-    i3lock
-    i3status
-    libnotify
-    networkmanagerapplet
-    pavucontrol
-    blueman
-    rxvt_unicode-with-plugins
-    trayer
-    xautolock
-    xlsfonts
-    xsel
 
     # Firmware tools
     avrdude
@@ -50,22 +40,67 @@
     bind
     btrfs-progs
     bzip2
+    gist
     gzip
+    html-tidy
     htop
+    hwinfo
     iotop
+    nmap
     openconnect
+    pciutils
+    psmisc
     unzip
 
     # Programming
+    cargo
+    docker_compose
+    git-hub
     gnumake
     go
+    jq
+    #kafkacat # not in nixos yet
+    lldb
+    racer
     ruby
     rustc
-    cargo
 
     # Security
     gnupg
-    pinentry
     opensc
+    openssl
+    pinentry
+
+    # Consider extraction to "gui.nix"
+
+    # Basic X tools
+    arandr
+    blueman
+    dmenu
+    dunst
+    i3lock
+    i3status
+    keynav
+    libnotify
+    networkmanagerapplet
+    pavucontrol
+    rxvt_unicode-with-plugins
+    trayer
+    xautolock
+    xlsfonts
+    xorg.xkill
+    xsel
+
+    # Less basic X programs
+    fontforge
+    gimp
+    meld
+    nitrogen
+    pidgin
+    shutter
+    solvespace
+    taffybar
+    wine # for 1password
+
   ];
 }
