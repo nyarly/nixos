@@ -80,7 +80,7 @@
 
     locate = {
       enable = true;
-      localuser = "root";
+      localuser = null;
       # the default findutils is torturous
       locate = (lib.hiPrio pkgs.mlocate);
     };
