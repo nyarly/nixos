@@ -100,6 +100,7 @@
     shutter
     solvespace
     taffybar
+    franz
     wine # for 1password
 
   ];
