@@ -11,6 +11,8 @@
 
   virtualisation.virtualbox.host.enable = true;
 
+  nix.gc.automatic = true;
+
   services = {
     xserver = {
       enable = true;

@@ -1,10 +1,5 @@
 { config, pkgs, ... }:
 {
-
-  nixpkgs.overlays = [
-    (import overlays/bcc.nix)
-  ];
-
   environment.systemPackages = with pkgs; [
     # Basic user environment
     bc
@@ -19,7 +14,7 @@
     ripgrep
     tmux
     tree
-    # vcsh # build was broken in NixOS 17.03
+    vcsh # build was broken in NixOS 17.03
     which
 
     # Extra nix tools
@@ -30,13 +25,15 @@
 
     # Firmware tools
     avrdude
-    avrgcclibc
+    avrbinutils
+    avrgcc
+    avrlibc
     dfu-util
     usbutils
 
     # System management
-    #linuxPackages.bcc
-    bcc
+    linuxPackages.bcc
+    # bcc
     bind
     btrfs-progs
     bzip2
