@@ -16,6 +16,7 @@
     tree
     vcsh # build was broken in NixOS 17.03
     which
+    manpages
 
     # Extra nix tools
     nix-prefetch-scripts
