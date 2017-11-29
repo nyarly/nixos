@@ -38,6 +38,8 @@
   security.sudo.wheelNeedsPassword = false;
   sound.mediaKeys.enable = true;
 
+  programs.man.enable = true;
+
   hardware = {
     pulseaudio = {
       enable = true;

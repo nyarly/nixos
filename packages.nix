@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+
   environment.systemPackages = with pkgs; [
     # Basic user environment
     bc
