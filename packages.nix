@@ -18,6 +18,7 @@
     vcsh # build was broken in NixOS 17.03
     which
     manpages
+    manpages.docdev
 
     # Extra nix tools
     nix-prefetch-scripts

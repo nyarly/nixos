@@ -72,11 +72,6 @@
       enable = true;
     };
 
-    clamav = {
-      updater.enable = true;
-      daemon.enable = true;
-    };
-
     # Smartcards
     pcscd.enable = true;
 
