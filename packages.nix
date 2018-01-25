@@ -85,6 +85,7 @@
     networkmanagerapplet
     pavucontrol
     rxvt_unicode-with-plugins
+    alacritty #maybe replacing rxvt?
     trayer
     xautolock
     xlsfonts
