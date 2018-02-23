@@ -63,7 +63,7 @@
     lldb
     racer
     ruby
-    rustc
+    # rustc # doesn't work - need to use the mozilla overlays
 
     # Security
     gnupg
