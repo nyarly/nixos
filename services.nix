@@ -34,7 +34,7 @@
             haskell.taffybar
           ];
         };
-        default = "i3";
+        default = "xmonad";
       };
       libinput.middleEmulation = true;
       xkbOptions = "terminate:ctrl_alt_bksp, ctrl:nocaps";
