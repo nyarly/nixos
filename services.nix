@@ -11,7 +11,10 @@
 
   virtualisation.virtualbox.host.enable = true;
 
-  nix.gc.automatic = true;
+  nix = {
+    gc.automatic = true;
+    package = pkgs.nixStable2;
+  };
 
   services = {
     xserver = {
