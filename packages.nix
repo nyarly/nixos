@@ -3,6 +3,8 @@
 
   environment.systemPackages = with pkgs; [
     # Basic user environment
+    aspell
+    aspellDicts.en
     bc
     chromium
     direnv
@@ -10,14 +12,28 @@
     fasd
     fish
     fzf
-    git
-    neovim
     ripgrep
     tmux
     tree
     vcsh # build was broken in NixOS 17.03
     which
     manpages
+    direnv
+    exa
+    fasd
+    fzf
+    vcsh
+    kakoune
+    neovim
+    ranger
+
+
+    # version control
+    gitAndTools.tig
+    gitFull
+    git-hub
+    pijul
+
     #manpages.docdev
 
     # Extra nix tools
@@ -25,6 +41,7 @@
     nix-repl
     nox
     patchelf
+    nixops
 
     # Firmware tools
     avrdude
@@ -51,25 +68,58 @@
     pciutils
     psmisc
     unzip
+    dbus-map
+    docker_compose
+    ec2_ami_tools
+    duply
+    lsof
+    mmv
+    nethogs
+    networkmanager_openconnect
+    libsForQt59.networkmanager-qt
+    sqlite-interactive
+    sysstat
+    vagrant
+    whois
+    wireshark-qt
+
+    # Fonts
+    fontforge-fonttools
+    fontforge-gtk
+    gucharmap
 
     # Programming
-    cargo
     docker_compose
     git-hub
     gnumake
     go
     jq
-    #kafkacat # not in nixos yet
     lldb
     racer
     ruby
-    # rustc # doesn't work - need to use the mozilla overlays
+    apacheKafka
+    kafkacat
+    maven
+    bundix
+    cargo
+    rustc
+    rustfmt
+    universal-ctags
+    python36Packages.Flootty
+    godep
+    kona
+    man-db
+    man-pages
+    oraclejdk8psu
 
     # Security
     gnupg
     opensc
     openssl
     pinentry
+    yubikey-manager
+    yubikey-personalization
+    yubikey-personalization-gui
 
     # Consider extraction to "gui.nix"
 
@@ -91,6 +141,8 @@
     xlsfonts
     xorg.xkill
     xsel
+    gnome3.dconf
+    gnome3.dconf-editor
 
     # Less basic X programs
     fontforge
@@ -99,10 +151,17 @@
     nitrogen
     pidgin
     shutter
+    scrot
     solvespace
     taffybar
-    franz
     wine # for 1password
+
+    glxinfo
+    primus
+    vlc
+    gnugo
+    inkscape
+
 
   ];
 }
