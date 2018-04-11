@@ -13,7 +13,6 @@
 
   nix = {
     gc.automatic = true;
-    package = pkgs.nixStable2;
   };
 
   services = {

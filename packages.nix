@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 {
-
   environment.systemPackages = with pkgs; [
     # Basic user environment
     aspell
@@ -30,8 +29,8 @@
 
     # version control
     gitAndTools.tig
+    gitAndTools.hub
     gitFull
-    git-hub
     pijul
 
     #manpages.docdev
@@ -70,7 +69,7 @@
     unzip
     dbus-map
     docker_compose
-    ec2_ami_tools
+    # ec2_ami_tools # unfree Amazon license
     duply
     lsof
     mmv
@@ -98,7 +97,7 @@
     racer
     ruby
     apacheKafka
-    kafkacat
+    kafkacat #still missing?
     maven
     bundix
     cargo
@@ -110,7 +109,7 @@
     kona
     man-db
     man-pages
-    oraclejdk8psu
+    # oraclejdk8psu #nonfree
 
     # Security
     gnupg
