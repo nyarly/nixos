@@ -152,7 +152,8 @@
     shutter
     scrot
     solvespace
-    taffybar
+    #taffybar #huge memory leak
+    polybar
     wine # for 1password
 
     glxinfo
