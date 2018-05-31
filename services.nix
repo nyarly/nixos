@@ -16,6 +16,11 @@
   };
 
   services = {
+    dnscrypt-proxy = {
+      enable = true;
+      resolverName = "dnscrypt.ca-1";
+    };
+
     xserver = {
       enable = true;
       exportConfiguration = true;
