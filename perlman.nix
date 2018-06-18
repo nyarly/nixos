@@ -22,8 +22,6 @@
   };
 
   services = {
-    illum.enable = true;
-
     xserver = {
       videoDrivers = [ "nouveau" "intel"  "modesetting" ];
       multitouch = {

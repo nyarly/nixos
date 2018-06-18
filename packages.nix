@@ -161,6 +161,7 @@
     vlc
     gnugo
     inkscape
+    zoom-us
 
 
   ];
