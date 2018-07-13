@@ -139,7 +139,7 @@
     xautolock
     xlsfonts
     xorg.xkill
-    xsel
+    xclip
     gnome3.dconf
     gnome3.dconf-editor
 
