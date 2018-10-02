@@ -14,7 +14,7 @@
     ripgrep
     tmux
     tree
-    vcsh # build was broken in NixOS 17.03
+    vcsh
     which
     manpages
     direnv
@@ -25,6 +25,7 @@
     kakoune
     neovim
     ranger
+    qrencode
 
 
     # version control
@@ -37,7 +38,6 @@
 
     # Extra nix tools
     nix-prefetch-scripts
-    nix-repl
     nox
     patchelf
     nixops
@@ -89,7 +89,9 @@
 
     # Programming
     docker_compose
+    fswatch
     git-hub
+    git-crypt
     gnumake
     go
     jq
@@ -109,7 +111,9 @@
     kona
     man-db
     man-pages
+    visualvm #ugh
     # oraclejdk8psu #nonfree
+    libxml2
 
     # Security
     gnupg
@@ -119,6 +123,8 @@
     yubikey-manager
     yubikey-personalization
     yubikey-personalization-gui
+    pcsctools
+
 
     # Consider extraction to "gui.nix"
 
@@ -127,6 +133,7 @@
     blueman
     dmenu
     dunst
+    feh
     i3lock
     i3status
     keynav
@@ -137,9 +144,10 @@
     alacritty #maybe replacing rxvt?
     trayer
     xautolock
+    xorg.xev
     xlsfonts
     xorg.xkill
-    xsel
+    xclip
     gnome3.dconf
     gnome3.dconf-editor
 
@@ -155,7 +163,6 @@
     #taffybar #huge memory leak
     polybar
     wine # for 1password
-
     glxinfo
     primus
     vlc
