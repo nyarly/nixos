@@ -12,6 +12,7 @@
     ./shared.nix
     ./services.nix
     ./packages.nix
+    ./modules/reload-bluetooth.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

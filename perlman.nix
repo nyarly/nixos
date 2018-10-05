@@ -1,3 +1,4 @@
+
 { config, pkgs, ... }:
 {
   # For Radia Perlman, inventor of STP
@@ -30,6 +31,8 @@
         tapButtons = false;
       };
     };
+
+    reloadBluetooth.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
