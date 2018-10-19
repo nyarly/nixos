@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
-  localDnscryptPort = 43;
-  localDnscryptAddress = "127.0.0.1:${toString localDnscryptPort}";
+  localDnscryptAddress = "127.0.0.2";
 in
 {
   nixpkgs.overlays = [
@@ -12,7 +11,6 @@ in
     networkmanager = {
       enable = true;
       insertNameservers = [
-        "127.0.0.42"
         "127.0.0.1"
       ];
       #useDnsmasq = true;
@@ -20,6 +18,7 @@ in
 
     extraResolvconfConf = ''
       unbound_conf=/var/lib/unbound/unbound-resolvconf.conf
+
     '';
     /*
     extraResolvconfConf = ''
@@ -35,19 +34,24 @@ in
       enable = true;
       interfaces = [
         "127.0.0.1"
-        "127.0.0.42"
         "::1"
       ];
 
+      forwardAddresses = [ localDnscryptAddress ];
+
       extraConfig = ''
         include: /var/lib/unbound/unbound-resolvconf.conf
+
+        server:
+          do-not-query-localhost: no
       '';
     };
 
     dnsmasq = {
       #enable = true;
       servers = [
-        "127.0.0.1#${toString localDnscryptPort}"
+        #"127.0.0.1#${toString localDnscryptPort}"
+        localDnscryptAddress
         "/qasql.opentable.com/10.0.0.104"
         "/qasql.opentable.com/10.0.0.104"
         "/otcorp.opentable.com/10.0.0.103"
@@ -67,7 +71,7 @@ in
       enable = true;
       config = {
         listen_addresses = [
-          localDnscryptAddress
+          "${localDnscryptAddress}:53"
         ];
 
         fallback_resolver = "1.1.1.1:53";
