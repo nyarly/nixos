@@ -21,7 +21,15 @@
     };
   };
 
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+
+    extraResolvconfConf = ''
+      dnsmasq_conf=/etc/dnsmasq-conf.conf
+      dnsmasq_resolv=NO
+      dnsmasq_pid=/var/run/dnsmasq.pid
+    '';
+  };
 
   # Select internationalisation properties.
   # i18n = {
