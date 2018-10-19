@@ -6,14 +6,14 @@ let
 in
 {
   imports = [
-    ./modules/dummy-interfaces.nix
+    #./modules/dummy-interfaces.nix
     ./modules/dnscrypt-proxy2.nix
   ];
 
   networking = {
-    dummy-interfaces = {
-      "dns_dummy" = { address = dockerCompatibilityAddress; prefixLength = 24; };
-    };
+    interfaces.dummy0.ipv4.addresses = [
+      { address = dockerCompatibilityAddress; prefixLength = 24; }
+    ];
     networkmanager = {
       enable = true;
       insertNameservers = [
@@ -53,26 +53,24 @@ in
         server:
           do-not-query-localhost: no
           pidfile: /var/run/unbound.pid
-      '';
-    };
 
-    dnsmasq = {
-      #enable = true;
-      servers = [
-        #"127.0.0.1#${toString localDnscryptPort}"
-        localDnscryptAddress
-        "/qasql.opentable.com/10.0.0.104"
-        "/qasql.opentable.com/10.0.0.104"
-        "/otcorp.opentable.com/10.0.0.103"
-        "/otcorp.opentable.com/10.0.0.103"
-        #"8.8.8.8"
-      ];
-      extraConfig = ''
-        listen-address=127.0.0.1
-        listen-address=127.0.0.42
-        log-queries
+          # Traffic to the non localhost interface
+          # comes from a DHCP assigned address
+          # Ideal case would be to add something to resolvconf
+          # or the NetworkManager dispatcher
+          access-control: 192.168.0.0/16 allow
+          access-control: 10.0.0.0/8 allow
 
-        address=/local/127.0.0.1
+      # Totally a hack until I can figure out how to get VPN working properly.
+      forward-zone:
+        name: qasql.opentable.com
+        forward-addr: 10.0.0.103
+        forward-addr: 10.0.0.104
+
+      forward-zone:
+        name: otcorp.opentable.com
+        forward-addr: 10.0.0.103
+        forward-addr: 10.0.0.104
       '';
     };
 
