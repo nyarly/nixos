@@ -1,5 +1,5 @@
-{ config, lib, pkgs, ... }: with lib;
-
+{ config, lib, pkgs, ... }:
+with lib;
 let
   cfg = config.services.dnscrypt-proxy2;
 
@@ -42,6 +42,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    nixpkgs.overlays = [
+      (import ../overlays/add-dnscrypt-proxy2.nix)
+    ];
+
     networking.nameservers = lib.mkDefault [ "127.0.0.1" ];
 
     systemd.services.dnscrypt-proxy2 = {

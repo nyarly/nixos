@@ -1,17 +1,24 @@
 { config, pkgs, ... }:
 let
   localDnscryptAddress = "127.0.0.2";
+  dockerCompatibilityPrefix = "172.19.17.";
+  dockerCompatibilityAddress = "${dockerCompatibilityPrefix}1";
 in
 {
-  nixpkgs.overlays = [
-    (import overlays/add-dnscrypt-proxy2.nix)
+  imports = [
+    ./modules/dummy-interfaces.nix
+    ./modules/dnscrypt-proxy2.nix
   ];
 
   networking = {
+    dummy-interfaces = {
+      "dns_dummy" = { address = dockerCompatibilityAddress; prefixLength = 24; };
+    };
     networkmanager = {
       enable = true;
       insertNameservers = [
         "127.0.0.1"
+        dockerCompatibilityAddress
       ];
       #useDnsmasq = true;
     };
@@ -33,6 +40,7 @@ in
     unbound = {
       enable = true;
       interfaces = [
+        dockerCompatibilityAddress
         "127.0.0.1"
         "::1"
       ];
@@ -44,6 +52,7 @@ in
 
         server:
           do-not-query-localhost: no
+          pidfile: /var/run/unbound.pid
       '';
     };
 
@@ -121,6 +130,5 @@ in
         };
       };
     };
-
   };
 }

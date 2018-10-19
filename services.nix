@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 {
 
-  imports = [ ./dnscrypt-proxy2.nix ];
 
   systemd.tmpfiles.rules = [
     "d /tmp 1777 root root 3d"
