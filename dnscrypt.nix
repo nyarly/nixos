@@ -1,4 +1,8 @@
 { config, pkgs, ... }:
+let
+  localDnscryptPort = 43;
+  localDnscryptAddress = "127.0.0.1:${toString localDnscryptPort}";
+in
 {
   nixpkgs.overlays = [
     (import overlays/add-dnscrypt-proxy2.nix)

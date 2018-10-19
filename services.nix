@@ -1,8 +1,4 @@
 { config, pkgs, lib, ... }:
-let
-  localDnscryptPort = 43;
-  localDnscryptAddress = "127.0.0.1:${toString localDnscryptPort}";
-in
 {
 
   imports = [ ./dnscrypt-proxy2.nix ];
