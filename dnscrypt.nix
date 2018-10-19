@@ -11,20 +11,41 @@ in
   networking = {
     networkmanager = {
       enable = true;
-      insertNameservers = [ "127.0.0.42" ];
-      useDnsmasq = true;
+      insertNameservers = [
+        "127.0.0.42"
+        "127.0.0.1"
+      ];
+      #useDnsmasq = true;
     };
 
+    extraResolvconfConf = ''
+      unbound_conf=/var/lib/unbound/unbound-resolvconf.conf
+    '';
+    /*
     extraResolvconfConf = ''
       dnsmasq_conf=/etc/dnsmasq-conf.conf
       dnsmasq_resolv=NO
       dnsmasq_pid=/var/run/dnsmasq.pid
     '';
+    */
   };
 
   services = {
-    dnsmasq = {
+    unbound = {
       enable = true;
+      interfaces = [
+        "127.0.0.1"
+        "127.0.0.42"
+        "::1"
+      ];
+
+      extraConfig = ''
+        include: /var/lib/unbound/unbound-resolvconf.conf
+      '';
+    };
+
+    dnsmasq = {
+      #enable = true;
       servers = [
         "127.0.0.1#${toString localDnscryptPort}"
         "/qasql.opentable.com/10.0.0.104"
