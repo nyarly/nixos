@@ -13,6 +13,7 @@
     ./services.nix
     ./packages.nix
     ./dnscrypt.nix
+    ./modules/reload-bluetooth.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
