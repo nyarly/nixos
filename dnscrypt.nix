@@ -10,6 +10,8 @@ in
     ./modules/dnscrypt-proxy2.nix
   ];
 
+  boot.kernelModules = [ "dummy" ];
+
   networking = {
     interfaces.dummy0.ipv4.addresses = [
       { address = dockerCompatibilityAddress; prefixLength = 24; }
@@ -48,6 +50,7 @@ in
       forwardAddresses = [ localDnscryptAddress ];
 
       extraConfig = ''
+
         include: /var/lib/unbound/unbound-resolvconf.conf
 
         server:
@@ -60,25 +63,26 @@ in
           # or the NetworkManager dispatcher
           access-control: 192.168.0.0/16 allow
           access-control: 10.0.0.0/8 allow
+          val-permissive-mode: yes
 
-      remote-control:
-        control-enable: yes
-        control-interface: 127.0.0.1
-        server-key-file: /var/lib/unbound/unbound_server.key
-        server-cert-file: /var/lib/unbound/unbound_server.pem
-        control-key-file: /var/lib/unbound/unbound_control.key
-        control-cert-file: /var/lib/unbound/unbound_control.pem
+        remote-control:
+          control-enable: yes
+          control-interface: 127.0.0.1
+          server-key-file: /var/lib/unbound/unbound_server.key
+          server-cert-file: /var/lib/unbound/unbound_server.pem
+          control-key-file: /var/lib/unbound/unbound_control.key
+          control-cert-file: /var/lib/unbound/unbound_control.pem
 
-      # Totally a hack until I can figure out how to get VPN working properly.
-      forward-zone:
-        name: qasql.opentable.com
-        forward-addr: 10.0.0.103
-        forward-addr: 10.0.0.104
+        # Totally a hack until I can figure out how to get VPN working properly.
+        forward-zone:
+          name: qasql.opentable.com
+          forward-addr: 10.0.0.103
+          forward-addr: 10.0.0.104
 
-      forward-zone:
-        name: otcorp.opentable.com
-        forward-addr: 10.0.0.103
-        forward-addr: 10.0.0.104
+        forward-zone:
+          name: otcorp.opentable.com
+          forward-addr: 10.0.0.103
+          forward-addr: 10.0.0.104
       '';
     };
 
