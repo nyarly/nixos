@@ -3,10 +3,6 @@
   networking = {
     # For John von Neumann, of the von Neumann machine etc etc etc
     hostName = "neumann";
-    networkmanager = {
-      insertNameservers = [ "127.0.0.42" ];
-      useDnsmasq = true;
-    };
   };
 
   hardware = {

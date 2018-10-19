@@ -12,6 +12,7 @@
     ./shared.nix
     ./services.nix
     ./packages.nix
+    ./dnscrypt.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
