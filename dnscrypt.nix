@@ -61,6 +61,14 @@ in
           access-control: 192.168.0.0/16 allow
           access-control: 10.0.0.0/8 allow
 
+      remote-control:
+        control-enable: yes
+        control-interface: 127.0.0.1
+        server-key-file: /var/lib/unbound/unbound_server.key
+        server-cert-file: /var/lib/unbound/unbound_server.pem
+        control-key-file: /var/lib/unbound/unbound_control.key
+        control-cert-file: /var/lib/unbound/unbound_control.pem
+
       # Totally a hack until I can figure out how to get VPN working properly.
       forward-zone:
         name: qasql.opentable.com
