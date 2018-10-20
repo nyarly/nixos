@@ -21,6 +21,10 @@
     };
   };
 
+  networking.firewall = {
+    pingLimit = "--limit 1/minute --limit-burst 5";
+  };
+
   # Select internationalisation properties.
   # i18n = {
   #   consoleFont = "Lat2-Terminus16";
@@ -30,7 +34,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
-
 
   powerManagement.enable = true;
   security.sudo.wheelNeedsPassword = false;

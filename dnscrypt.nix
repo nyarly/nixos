@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   localDnscryptAddress = "127.0.0.2";
-  dockerCompatibilityPrefix = "172.19.17.";
+  dockerCompatibilityPrefix = "172.37.17.";
   dockerCompatibilityAddress = "${dockerCompatibilityPrefix}1";
 in
 {
@@ -16,6 +16,14 @@ in
     interfaces.dummy0.ipv4.addresses = [
       { address = dockerCompatibilityAddress; prefixLength = 24; }
     ];
+
+    firewall = {
+      extraCommands = ''
+        iptables -A nixos-fw -i docker0 -d ${dockerCompatibilityAddress} -p udp -m udp --destination-port 53 -j nixos-fw-accept
+        iptables -A nixos-fw -i docker0 -s ${dockerCompatibilityAddress} -p udp -m udp --source-port      53 -j nixos-fw-accept
+      '';
+    };
+
     networkmanager = {
       enable = true;
       insertNameservers = [
@@ -63,6 +71,8 @@ in
           # or the NetworkManager dispatcher
           access-control: 192.168.0.0/16 allow
           access-control: 10.0.0.0/8 allow
+          # oh yeah, docker containers
+          access-control: 172.17.0.0/16 allow
           val-permissive-mode: yes
 
         remote-control:
