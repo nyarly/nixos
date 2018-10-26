@@ -6,7 +6,6 @@ let
 in
 {
   imports = [
-    #./modules/dummy-interfaces.nix
     ./modules/dnscrypt-proxy2.nix
   ];
 
@@ -17,6 +16,7 @@ in
       { address = dockerCompatibilityAddress; prefixLength = 24; }
     ];
 
+    # Have to poke a hole in our firewall for docker containers to reach the DNS server.
     firewall = {
       extraCommands = ''
         iptables -A nixos-fw -i docker0 -d ${dockerCompatibilityAddress} -p udp -m udp --destination-port 53 -j nixos-fw-accept
@@ -30,21 +30,18 @@ in
         "127.0.0.1"
         dockerCompatibilityAddress
       ];
-      #useDnsmasq = true;
     };
-
-    extraResolvconfConf = ''
-      unbound_conf=/var/lib/unbound/unbound-resolvconf.conf
-
-    '';
-    /*
-    extraResolvconfConf = ''
-      dnsmasq_conf=/etc/dnsmasq-conf.conf
-      dnsmasq_resolv=NO
-      dnsmasq_pid=/var/run/dnsmasq.pid
-    '';
-    */
   };
+
+  # Funny story: NetworkManager trips on its own feet trying to get the Openconnect
+  # response to resolvconf, which leads to it truncating the list of resolved
+  # domains to 6. Fortunately, it provides the right list to dispatcher scripts.
+  environment.etc = [
+    {
+      source = lib/vpn-unbound;
+      target = "NetworkManager/dispatcher.d/vpn-unbound";
+    }
+  ];
 
   services = {
     unbound = {
@@ -71,7 +68,6 @@ in
           # or the NetworkManager dispatcher
           access-control: 192.168.0.0/16 allow
           access-control: 10.0.0.0/8 allow
-          # oh yeah, docker containers
           access-control: 172.17.0.0/16 allow
           val-permissive-mode: yes
 
@@ -82,17 +78,6 @@ in
           server-cert-file: /var/lib/unbound/unbound_server.pem
           control-key-file: /var/lib/unbound/unbound_control.key
           control-cert-file: /var/lib/unbound/unbound_control.pem
-
-        # Totally a hack until I can figure out how to get VPN working properly.
-        forward-zone:
-          name: qasql.opentable.com
-          forward-addr: 10.0.0.103
-          forward-addr: 10.0.0.104
-
-        forward-zone:
-          name: otcorp.opentable.com
-          forward-addr: 10.0.0.103
-          forward-addr: 10.0.0.104
       '';
     };
 
