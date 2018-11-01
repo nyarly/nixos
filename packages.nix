@@ -106,8 +106,7 @@
     rustc
     rustfmt
     universal-ctags
-    python36Packages.Flootty
-    godep
+    # godep # so deprecated
     kona
     man-db
     man-pages
