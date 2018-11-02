@@ -95,9 +95,12 @@
 
     };
 
+    /*
+    # because /run/current-system/sw/bin/loginctl
     udev.extraRules = ''
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", MODE="0664", GROUP="wheel"
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ACTION=="remove", RUN+="/run/current-system/sw/bin/loginctl lock-sessions"
     '';
+    */
   };
 }

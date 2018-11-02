@@ -3,6 +3,8 @@
 {
   # For Radia Perlman, inventor of STP
   networking = {
+    networkmanager.enable = true;
+
     hostName = "perlman";
     extraHosts = ''
       127.0.0.1 perlman

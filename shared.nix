@@ -60,4 +60,9 @@
     shell = "/run/current-system/sw/bin/fish";
     extraGroups = [ "wheel" "audio" "networkmanager" "docker" "vboxusers" "lp" ];
   };
+
+  fileSystems."/home/judson/VirtualBox VMs" = {
+     device = "/dev/disk/by-uuid/87ef42a7-66f0-4917-926e-c808571e141c";
+     fsType = "ext4";
+  };
 }

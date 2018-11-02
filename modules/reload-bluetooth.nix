@@ -22,9 +22,9 @@ in
     systemd.services.reloadBluetooth = {
       description = "reload bluetooth modules on resume";
 
-      after = [ "suspend.target" ];
+      after = [ "post-resume.target" ];
 
-      wantedBy = [ "suspend.target" ];
+      wantedBy = [ "post-resume.target" ];
 
       serviceConfig = {
         Type = "oneshot";

@@ -8,24 +8,21 @@
     chromium
     direnv
     dynamic-colors
+    exa
     fasd
     fish
     fzf
+    kakoune
+    manpages
+    neovim
+    pinfo
+    qrencode
+    ranger
     ripgrep
     tmux
     tree
     vcsh
     which
-    manpages
-    direnv
-    exa
-    fasd
-    fzf
-    vcsh
-    kakoune
-    neovim
-    ranger
-    qrencode
 
 
     # version control
@@ -62,13 +59,14 @@
     htop
     hwinfo
     iotop
+    lshw
+    mtr
     nmap
     openconnect
     pciutils
     psmisc
     unzip
     dbus-map
-    docker_compose
     # ec2_ami_tools # unfree Amazon license
     duply
     lsof
@@ -87,6 +85,13 @@
     fontforge-gtk
     gucharmap
 
+    #2nix
+    go2nix
+    npm2nix
+    pypi2nix
+    bundix
+
+
     # Programming
     docker_compose
     fswatch
@@ -99,19 +104,16 @@
     racer
     ruby
     apacheKafka
-    kafkacat #still missing?
+    kafkacat
     maven
-    bundix
     cargo
     rustc
     rustfmt
+    teensy-loader-cli
     universal-ctags
-    # godep # so deprecated
     kona
     man-db
     man-pages
-    visualvm #ugh
-    # oraclejdk8psu #nonfree
     libxml2
 
     # Security
@@ -133,6 +135,7 @@
     dmenu
     dunst
     feh
+    illum
     i3lock
     i3status
     keynav
@@ -152,6 +155,7 @@
 
     # Less basic X programs
     fontforge
+    graphviz
     gimp
     meld
     nitrogen
@@ -159,9 +163,10 @@
     shutter
     scrot
     solvespace
-    #taffybar #huge memory leak
+    signal-desktop
+    #  steam
+    taffybar #huge memory leak?
     polybar
-    wine # for 1password
     glxinfo
     primus
     vlc
