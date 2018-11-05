@@ -1,11 +1,8 @@
 { config, pkgs, lib, ... }:
 {
-
-
   systemd.tmpfiles.rules = [
     "d /tmp 1777 root root 3d"
     ];
-
 
   # in preference of GPG Agent
   programs.ssh.startAgent = false;
@@ -96,10 +93,10 @@
     };
 
     /*
-    # because /run/current-system/sw/bin/loginctl
+    loginctl is a problem
     udev.extraRules = ''
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", MODE="0664", GROUP="wheel"
-      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ACTION=="remove", RUN+="/run/current-system/sw/bin/loginctl lock-sessions"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ACTION=="remove", RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
     '';
     */
   };
