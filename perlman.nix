@@ -24,6 +24,12 @@
     postMountCommands = "cryptsetup luksOpen --key-file /mnt-root/etc/swap.keyfile /dev/sda2 swap";
   };
 
+  # Vagrant insists on this path
+  fileSystems."/home/judson/VirtualBox\\040VMs" = {
+     device = "/dev/disk/by-uuid/87ef42a7-66f0-4917-926e-c808571e141c";
+     fsType = "ext4";
+  };
+
   services = {
     xserver = {
       videoDrivers = [ "nouveau" "intel"  "modesetting" ];

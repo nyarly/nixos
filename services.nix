@@ -92,12 +92,9 @@
 
     };
 
-    /*
-    loginctl is a problem
     udev.extraRules = ''
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", MODE="0664", GROUP="wheel"
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ACTION=="remove", RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
     '';
-    */
   };
 }
