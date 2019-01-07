@@ -1,7 +1,9 @@
 { config, pkgs, lib, ... }:
 {
+  systemd.tmpfiles.rules = [
+    "d /tmp 1777 root root 3d"
+    ];
 
-  systemd.tmpfiles.rules = [ "d /tmp 1777 root root 3d" ];
 
   # in preference of GPG Agent
   programs.ssh.startAgent = false;
@@ -15,8 +17,10 @@
       enable = true;
       exportConfiguration = true;
 
-      desktopManager.default = "none";
-
+      displayManager.sddm = {
+        enable = true;
+        autoNumlock = true;
+      };
       windowManager = {
         i3.enable = true;
         xmonad = {

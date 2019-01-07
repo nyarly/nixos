@@ -8,24 +8,21 @@
     chromium
     direnv
     dynamic-colors
+    exa
     fasd
     fish
     fzf
+    kakoune
+    manpages
+    neovim
+    pinfo
+    qrencode
+    ranger
     ripgrep
     tmux
     tree
     vcsh
     which
-    manpages
-    direnv
-    exa
-    fasd
-    fzf
-    vcsh
-    kakoune
-    neovim
-    ranger
-    qrencode
 
 
     # version control
@@ -49,6 +46,7 @@
     avrlibc
     dfu-util
     usbutils
+    teensy-loader-cli
 
     # System management
     linuxPackages.bcc
@@ -62,6 +60,8 @@
     htop
     hwinfo
     iotop
+    lshw
+    mtr
     nmap
     openconnect
     pciutils
@@ -88,6 +88,13 @@
     gucharmap
 
     # Programming
+    go2nix
+    npm2nix
+    pypi2nix
+    bundix
+
+
+    # Programming
     docker_compose
     fswatch
     git-hub
@@ -99,19 +106,15 @@
     racer
     ruby
     apacheKafka
-    kafkacat #still missing?
+    kafkacat
     maven
-    bundix
     cargo
     rustc
     rustfmt
     universal-ctags
-    # godep # so deprecated
     kona
     man-db
     man-pages
-    visualvm #ugh
-    # oraclejdk8psu #nonfree
     libxml2
 
     # Security
@@ -152,6 +155,7 @@
 
     # Less basic X programs
     fontforge
+    graphviz
     gimp
     meld
     nitrogen
@@ -160,15 +164,11 @@
     scrot
     solvespace
     taffybar
-    polybar
-    wine # for 1password
     glxinfo
     primus
     vlc
     gnugo
     inkscape
-    zoom-us
-
-
+    #zoom-us #ick but needed sometimes
   ];
 }

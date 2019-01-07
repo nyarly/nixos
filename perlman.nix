@@ -3,6 +3,8 @@
 {
   # For Radia Perlman, inventor of STP
   networking = {
+    networkmanager.enable = true;
+
     hostName = "perlman";
     extraHosts = ''
       127.0.0.1 perlman
@@ -20,6 +22,12 @@
       { name = "lvm";  device = "/dev/disk/by-uuid/b08be164-c886-47e1-9ada-757ba4b44b6c"; preLVM = true; }
     ];
     postMountCommands = "cryptsetup luksOpen --key-file /mnt-root/etc/swap.keyfile /dev/sda2 swap";
+  };
+
+  # Vagrant insists on this path
+  fileSystems."/home/judson/VirtualBox\\040VMs" = {
+     device = "/dev/disk/by-uuid/87ef42a7-66f0-4917-926e-c808571e141c";
+     fsType = "ext4";
   };
 
   services = {

@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    # I'd like to set this up everywhere but it broke and time is limited
+    ./dnscrypt.nix
+  ];
+
   networking = {
     # For John von Neumann, of the von Neumann machine etc etc etc
     hostName = "neumann";
