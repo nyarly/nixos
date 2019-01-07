@@ -139,10 +139,10 @@
     libnotify
     networkmanagerapplet
     pavucontrol
-    rxvt_unicode-with-plugins
-    alacritty #maybe replacing rxvt?
+    alacritty
     trayer
     xautolock
+    xss-lock
     xorg.xev
     xlsfonts
     xorg.xkill
@@ -159,7 +159,7 @@
     shutter
     scrot
     solvespace
-    #taffybar #huge memory leak
+    taffybar
     polybar
     wine # for 1password
     glxinfo

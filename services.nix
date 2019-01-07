@@ -1,30 +1,22 @@
 { config, pkgs, lib, ... }:
 {
 
-
-  systemd.tmpfiles.rules = [
-    "d /tmp 1777 root root 3d"
-    ];
-
+  systemd.tmpfiles.rules = [ "d /tmp 1777 root root 3d" ];
 
   # in preference of GPG Agent
   programs.ssh.startAgent = false;
 
   virtualisation.virtualbox.host.enable = true;
 
-  nix = {
-    gc.automatic = true;
-  };
+  nix.gc.automatic = true;
 
   services = {
     xserver = {
       enable = true;
       exportConfiguration = true;
 
-      displayManager.sddm = {
-        enable = true;
-        autoNumlock = true;
-      };
+      desktopManager.default = "none";
+
       windowManager = {
         i3.enable = true;
         xmonad = {
@@ -55,15 +47,6 @@
       };
     };
 
-    /*
-    # The Profile Sync Daemon
-    psd = {
-    enable = true;
-    users = [ "judson" ];
-    resyncTimer = "30min";
-    };
-    */
-
     illum.enable = true;
 
     # Name Service Cache Daemon
@@ -71,9 +54,7 @@
 
     upower.enable = true;
 
-    printing = {
-      enable = true;
-    };
+    printing.enable = true;
 
     # Smartcards
     pcscd.enable = true;
@@ -97,7 +78,7 @@
 
     udev.extraRules = ''
       KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", MODE="0664", GROUP="wheel"
-      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ACTION=="remove", RUN+="/run/current-system/sw/bin/loginctl lock-sessions"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ACTION=="remove", RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
     '';
   };
 }
