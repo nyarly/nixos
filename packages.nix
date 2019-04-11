@@ -1,31 +1,4 @@
 { config, pkgs, lib, ... }:
-let
-  glew20 = pkgs.glew.overrideDerivation (attrs: rec {
-    name = "glew-2.0.0";
-    src = pkgs.fetchurl {
-      url = "mirror://sourceforge/glew/${name}.tgz";
-      sha256 = "0r37fg2s1f0jrvwh6c8cz5x6v4wqmhq42qm15cs9qs349q5c6wn5";
-    };
-  });
-
-  my-steam = pkgs.steam.override {
-    withJava = true;
-    extraPkgs = with pkgs; originalPkgs: [
-      mono5
-      gtk3
-      gtk3-x11
-      libgdiplus
-      zlib
-      strace
-      at-spi2-atk
-      pango
-      libpng
-      fmodex
-      glew20
-    ];
-    nativeOnly = false;
-  };
-in
 {
   environment.systemPackages = with pkgs; [
     # Basic user environment
@@ -181,8 +154,6 @@ in
     gnome3.dconf-editor
 
     # Less basic X programs
-    my-steam
-    my-steam.run
     fontforge
     graphviz
     gimp
