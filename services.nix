@@ -58,7 +58,10 @@
 
     upower.enable = true;
 
-    printing.enable = true;
+    printing = {
+      enable = true;
+      #logLevel = "debug";
+    };
 
     # Smartcards
     pcscd.enable = true;

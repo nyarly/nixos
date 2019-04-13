@@ -41,9 +41,9 @@
 
     # Firmware tools
     avrdude
-    avrbinutils
-    avrgcc
-    avrlibc
+    # avrbinutils 19.03
+    # avrgcc
+    # avrlibc
     dfu-util
     usbutils
     teensy-loader-cli
