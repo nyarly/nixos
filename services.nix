@@ -10,7 +10,14 @@
 
   virtualisation.virtualbox.host.enable = true;
 
-  nix.gc.automatic = true;
+  nix = {
+    gc.automatic = true;
+
+    envVars = {
+      NIX_GITHUB_PRIVATE_USERNAME = import ./environment/github-username.private;
+      NIX_GITHUB_PRIVATE_PASSWORD = import ./environment/github-token.private;
+    };
+  };
 
   services = {
     xserver = {
