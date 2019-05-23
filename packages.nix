@@ -169,6 +169,6 @@
     vlc
     gnugo
     inkscape
-    #zoom-us #ick but needed sometimes
+    zoom-us #ick but needed sometimes
   ];
 }
