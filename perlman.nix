@@ -30,6 +30,10 @@
      fsType = "ext4";
   };
 
+  environment.systemPackages = with pkgs; [
+    cups-filters
+  ];
+
   services = {
     xserver = {
       videoDrivers = [ "nouveau" "intel"  "modesetting" ];
