@@ -11,6 +11,8 @@
     exa
     fasd
     fish
+    #(fish.overrideAttrs (oldAttrs: { cmakeFlags = []; }))
+
     fzf
     kakoune
     manpages

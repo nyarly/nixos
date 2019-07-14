@@ -11,6 +11,7 @@ let
   my-steam = pkgs.steam.override {
     withJava = true;
     extraPkgs = with pkgs; originalPkgs: [
+      binutils #addr2line for stacktraces
       mono5
       gtk3
       gtk3-x11
