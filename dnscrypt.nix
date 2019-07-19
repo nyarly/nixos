@@ -54,6 +54,11 @@ in
 
       forwardAddresses = [ localDnscryptAddress ];
 
+      /*
+      infra-host-ttl: 900 #default 900s
+      infra-cache-min-rtt: 50 # default 50ms
+      */
+
       extraConfig = ''
 
         include: /var/lib/unbound/unbound-resolvconf.conf
@@ -70,6 +75,9 @@ in
           access-control: 10.0.0.0/8 allow
           access-control: 172.17.0.0/16 allow
           val-permissive-mode: yes
+
+          infra-host-ttl: 5 #default 900s
+          infra-cache-min-rtt: 500 # default 50ms
 
         remote-control:
           control-enable: yes

@@ -10,8 +10,8 @@
     dynamic-colors
     exa
     fasd
-    fish
-    #(fish.overrideAttrs (oldAttrs: { cmakeFlags = []; }))
+    # fish # until stable lands PR
+    (fish.overrideAttrs (oldAttrs: { cmakeFlags = []; }))
 
     fzf
     kakoune
@@ -25,7 +25,6 @@
     tree
     vcsh
     which
-
 
     # version control
     gitAndTools.tig
