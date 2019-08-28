@@ -3,7 +3,9 @@
 {
   # For Radia Perlman, inventor of STP
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+    };
 
     hostName = "perlman";
     extraHosts = ''
@@ -14,7 +16,9 @@
       79.143.214.213 ha.pool.sks-keyservers.net
       178.32.66.144 ha.pool.sks-keyservers.net
       67.205.155.18 ha.pool.sks-keyservers.net
-    '';
+
+      # 10.20.35.182 mezzo.runthedish.com # testing
+      '';
 
   };
   boot.initrd = {
