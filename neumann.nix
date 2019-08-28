@@ -55,7 +55,13 @@ in
         bluetoothSupport = true;
       };
     })
+
+    (import ./overlays/chromium.nix)
   ];
+
+  nixpkgs.config.chromium = {
+    enablePepperFlash = true;
+  };
 
   zramSwap.enable = true;
   services = {
