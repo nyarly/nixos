@@ -62,5 +62,10 @@ in
     xserver = {
       videoDrivers = [ "nv" "nouveau" "intel"  "modesetting" ];
     };
+
+    printing = {
+      enable = true;
+      drivers = with pkgs; [ brlaser ];
+    };
   };
 }
