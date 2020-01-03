@@ -21,6 +21,13 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    noto-fonts-extra
+  ];
+
   networking.firewall = {
     pingLimit = "--limit 1/minute --limit-burst 5";
   };

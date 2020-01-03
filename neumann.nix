@@ -65,7 +65,12 @@ in
 
     printing = {
       enable = true;
-      drivers = with pkgs; [ brlaser ];
+      drivers = with pkgs; [
+        brlaser
+        cups-brother-hl1110
+        gutenprint
+        mfcl8690cdwlpr
+      ];
     };
   };
 }
