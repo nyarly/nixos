@@ -69,7 +69,7 @@ in
         brlaser
         cups-brother-hl1110
         gutenprint
-        mfcl8690cdwlpr
+        #mfcl8690cdwlpr
       ];
     };
   };
