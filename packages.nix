@@ -57,7 +57,7 @@
     mmv
     nethogs
     networkmanager_openconnect
-    libsForQt59.networkmanager-qt
+    #libsForQt59.networkmanager-qt
     sysstat
     vagrant
     whois

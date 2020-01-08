@@ -33,9 +33,13 @@ in
     ./dnscrypt.nix
   ];
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
+    /*
     my-steam
     my-steam.run
+    */
+    steam
+    steam.run
   ];
 
   networking = {
