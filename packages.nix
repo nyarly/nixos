@@ -90,7 +90,6 @@
     libnotify
     networkmanagerapplet
     pavucontrol
-    alacritty
     xautolock
     xss-lock
     xorg.xev
@@ -101,5 +100,6 @@
     glxinfo
     zoom-us #ick but needed sometimes
 
+    unstable.alacritty
   ];
 }

@@ -4,6 +4,12 @@
 
 { config, pkgs, ... }:
 
+let
+  unstableTarball = fetchTarball {
+    url = https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+    sha256 = "0cvnx852n0krci9hi1rpcldx1kcpmvi5ihf2awvwfayvzp4wic8z";
+  };
+in
 {
   imports =
   [ # Include the results of the hardware scan.
@@ -15,7 +21,16 @@
     ./modules/reload-bluetooth.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "18.03";
