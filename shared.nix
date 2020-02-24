@@ -28,6 +28,8 @@
     noto-fonts-extra
   ];
 
+  gtk.iconCache.enable = true; # required for taffybar?
+
   networking.firewall = {
     pingLimit = "--limit 1/minute --limit-burst 5";
   };

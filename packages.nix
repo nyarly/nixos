@@ -100,6 +100,6 @@
     primus
     glxinfo
     zoom-us #ick but needed sometimes
-
+    hicolor-icon-theme
   ];
 }
