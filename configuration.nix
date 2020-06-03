@@ -5,9 +5,11 @@
 { config, pkgs, ... }:
 
 let
-  unstableTarball = fetchTarball {
-    url = https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
-    sha256 = "0cvnx852n0krci9hi1rpcldx1kcpmvi5ihf2awvwfayvzp4wic8z";
+  unstableTarball = fetchGit {
+    name = "nixos-unstable-2020-03-09";
+    url = https://github.com/NixOS/nixpkgs-channels/;
+    ref = "refs/heads/nixos-unstable";
+    rev = "82b54d490663b6d87b7b34b9cfc0985df8b49c7d";
   };
 in
 {

@@ -23,6 +23,7 @@ let
       libpng
       fmodex
       glew20
+      inetutils # Unrailed expects ping...
     ];
     nativeOnly = false;
   };

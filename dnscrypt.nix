@@ -24,6 +24,12 @@ in
       '';
     };
 
+    resolvconf = {
+      extraConfig = ''
+        replace search/*/
+      '';
+    };
+
     networkmanager = {
       enable = true;
       insertNameservers = [
@@ -40,6 +46,15 @@ in
     {
       source = lib/vpn-unbound;
       target = "NetworkManager/dispatcher.d/vpn-unbound";
+    }
+    {
+      text = ''
+        #!/bin/sh
+        PATH=${with pkgs; lib.makeBinPath [ gnused ]}
+        sed -i '/^search /d' /etc/resolv.conf
+      '';
+      mode = "0500";
+      target = "NetworkManager/dispatcher.d/clobber-search";
     }
   ];
 

@@ -53,11 +53,15 @@
       enable = true;
       support32Bit = true;
     };
-    opengl.driSupport32Bit = true;
+    opengl = {
+      driSupport = true;
+      driSupport32Bit = true;
+    };
   };
 
   virtualisation.docker = {
     enable = true;
+    storageDriver = "overlay2";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
