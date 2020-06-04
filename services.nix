@@ -25,38 +25,24 @@
       enable = true;
       exportConfiguration = true;
 
-      displayManager.sddm = {
-        enable = true;
-        autoNumlock = true;
+      displayManager = {
+        defaultSession = "none+xmonad";
+        sddm = {
+          enable = true;
+          autoNumlock = true;
+        };
       };
       windowManager = {
         i3.enable = true;
         xmonad = {
           enable = true;
           enableContribAndExtras = true;
-          extraPackages = haskell: [
-            haskell.taffybar
-          ];
         };
-        default = "xmonad";
       };
-      libinput.middleEmulation = true;
+
       xkbOptions = "terminate:ctrl_alt_bksp, ctrl:nocaps";
 
-      # videoDrivers = [] # consider adding nvidia, or examining bumble or whatevs
-      multitouch = {
-        enable = true;
-        ignorePalm = true;
-        tapButtons = false;
-        additionalOptions = ''
-          Option "ScrollDistance" "50"
-        '';
-      };
-      synaptics = {
-        enable = true;
-        twoFingerScroll = true;
-        palmDetect = true;
-      };
+      libinput.enable = true;
     };
 
     illum.enable = true;

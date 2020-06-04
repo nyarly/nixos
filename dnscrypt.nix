@@ -5,10 +5,6 @@ let
   dockerCompatibilityAddress = "${dockerCompatibilityPrefix}1";
 in
 {
-  imports = [
-    ./modules/dnscrypt-proxy2.nix
-  ];
-
   boot.kernelModules = [ "dummy" ];
 
   networking = {
@@ -42,11 +38,12 @@ in
   # Funny story: NetworkManager trips on its own feet trying to get the Openconnect
   # response to resolvconf, which leads to it truncating the list of resolved
   # domains to 6. Fortunately, it provides the right list to dispatcher scripts.
-  environment.etc = [
-    {
+  environment.etc = {
+    "NetworkManager/dispatcher.d/vpn-unbound" = {
       source = lib/vpn-unbound;
-      target = "NetworkManager/dispatcher.d/vpn-unbound";
-    }
+    };
+
+    "NetworkManager/dispatcher.d/clobber-search" =
     {
       text = ''
         #!/bin/sh
@@ -54,9 +51,8 @@ in
         sed -i '/^search /d' /etc/resolv.conf
       '';
       mode = "0500";
-      target = "NetworkManager/dispatcher.d/clobber-search";
-    }
-  ];
+    };
+  };
 
   services = {
     unbound = {
@@ -106,7 +102,7 @@ in
 
     dnscrypt-proxy2 = {
       enable = true;
-      config = {
+      settings = {
         listen_addresses = [
           "${localDnscryptAddress}:53"
         ];
