@@ -32,6 +32,10 @@
 
   networking.firewall = {
     pingLimit = "--limit 1/minute --limit-burst 5";
+    checkReversePath = "loose"; # experimenting for Kind
+    # logReversePathDrops = true; # helpful, but so chatty
+    # if loose doesn't work...
+    # extraCommands = ''iptables -t raw -I nixos-fw-rpfilter 4 ...'';
   };
 
   # Select internationalisation properties.

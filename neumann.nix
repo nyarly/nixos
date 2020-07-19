@@ -34,6 +34,15 @@ in
     ./dnscrypt.nix
   ];
 
+  boot.initrd = {
+    luks.devices = {
+      "lvm" = {
+        device = "/dev/disk/by-uuid/757c5fe5-c76e-4afa-8c4e-3de9e2129d1b";
+        preLVM = true;
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     /*
     my-steam
