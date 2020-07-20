@@ -54,9 +54,17 @@ in
     };
   };
 
+  systemd.services.unbound.preStart = ''
+    mkdir -m 0755 -p /var/lib/unbound/dev/
+    touch /var/lib/unbound/unbound-resolvconf.conf
+    export PATH=$PATH:${pkgs.openssl}/bin
+    ${config.services.unbound.package}/bin/unbound-control-setup -d /var/lib/unbound
+  '';
+
   services = {
     unbound = {
       enable = true;
+
       interfaces = [
         dockerCompatibilityAddress
         "127.0.0.1"
@@ -71,7 +79,6 @@ in
       */
 
       extraConfig = ''
-
         include: /var/lib/unbound/unbound-resolvconf.conf
 
         server:
