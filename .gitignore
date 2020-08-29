@@ -3,3 +3,4 @@ hardware-configuration.nix
 luks.nix
 local-configuration.nix
 *.private
+modules/vanta/credentials.nix

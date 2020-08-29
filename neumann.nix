@@ -24,6 +24,7 @@ let
       fmodex
       glew20
       inetutils # Unrailed expects ping...
+      icu
     ];
     nativeOnly = false;
   };
@@ -32,6 +33,7 @@ in
   imports = [
     # I'd like to set this up everywhere but it broke and time is limited
     ./dnscrypt.nix
+    modules/vanta/module.nix
   ];
 
   boot.initrd = {
@@ -44,12 +46,12 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    /*
     my-steam
     my-steam.run
-    */
+    /*
     steam
     steam.run
+    */
   ];
 
   networking = {
@@ -73,6 +75,14 @@ in
 
   zramSwap.enable = true;
   services = {
+    vanta = let
+      credentials = import modules/vanta/credentials.nix;
+    in {
+      enable = true;
+      agentKey = credentials.VANTA_KEY;
+      email = credentials.VANTA_OWNER_EMAIL;
+    };
+
     xserver = {
       videoDrivers = [ "nv" "nouveau" "intel"  "modesetting" ];
     };
