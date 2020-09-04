@@ -70,6 +70,25 @@
     storageDriver = "overlay2";
   };
 
+  environment.etc = {
+    "systemd/user-generators/polybar-monitors" =
+    let gen = pkgs.writeShellScriptBin "polybar-monitors"
+    ''
+      src="''${HOME}/.config/systemd/user/polybar@.service"
+      [ -f "$src" ] || exit 0
+
+      tgt="''${1}/graphical-session.target.wants/"
+      mkdir -p $tgt
+      for d in $( xrandr -display :0.0 -q | grep '\bconnected\b' | awk '{ print $1 }' ); do
+        ln -s "$src" "$tgt/polybar@''${d}.service"
+      done
+    '';
+    in {
+      source = "${gen}/bin/polybar-monitors";
+      mode = "0555";
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.judson = {
     isNormalUser = true;
