@@ -71,40 +71,42 @@ in
         "::1"
       ];
 
-      forwardAddresses = [ localDnscryptAddress ];
 
-      /*
-      infra-host-ttl: 900 #default 900s
-      infra-cache-min-rtt: 50 # default 50ms
-      */
+      settings = {
+        forward-zone = [{
+          name = ".";
+          forward-addr = [ localDnscryptAddress ];
+        }];
 
-      extraConfig = ''
-        include: /var/lib/unbound/unbound-resolvconf.conf
+        include = "/var/lib/unbound/unbound-resolvconf.conf";
 
-        server:
-          do-not-query-localhost: no
-          pidfile: /var/run/unbound.pid
+        server = {
+          do-not-query-localhost = false;
 
           # Traffic to the non localhost interface
           # comes from a DHCP assigned address
           # Ideal case would be to add something to resolvconf
           # or the NetworkManager dispatcher
-          access-control: 192.168.0.0/16 allow
-          access-control: 10.0.0.0/8 allow
-          access-control: 172.17.0.0/16 allow
-          val-permissive-mode: yes
+          access-control = [
+            "192.168.0.0/16 allow"
+            "10.0.0.0/8 allow"
+            "172.17.0.0/16 allow"
+          ];
+          val-permissive-mode = true;
 
-          infra-host-ttl: 5 #default 900s
-          infra-cache-min-rtt: 500 # default 50ms
+          infra-host-ttl = 5; #default 900s
+          infra-cache-min-rtt = 500; # default 50ms
+        };
 
-        remote-control:
-          control-enable: yes
-          control-interface: 127.0.0.1
-          server-key-file: /var/lib/unbound/unbound_server.key
-          server-cert-file: /var/lib/unbound/unbound_server.pem
-          control-key-file: /var/lib/unbound/unbound_control.key
-          control-cert-file: /var/lib/unbound/unbound_control.pem
-      '';
+        remote-control = {
+          control-enable = true;
+          control-interface = "127.0.0.1";
+          server-key-file = "/var/lib/unbound/unbound_server.key";
+          server-cert-file = "/var/lib/unbound/unbound_server.pem";
+          control-key-file = "/var/lib/unbound/unbound_control.key";
+          control-cert-file = "/var/lib/unbound/unbound_control.pem";
+        };
+      };
     };
 
     dnscrypt-proxy2 = {
