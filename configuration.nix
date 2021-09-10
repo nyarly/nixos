@@ -5,12 +5,7 @@
 { config, pkgs, ... }:
 
 let
-  unstableTarball = fetchGit {
-    name = "nixos-unstable-2020-03-09";
-    url = https://github.com/NixOS/nixpkgs-channels/;
-    ref = "refs/heads/nixos-unstable";
-    rev = "82b54d490663b6d87b7b34b9cfc0985df8b49c7d";
-  };
+  unstableTarball = import ./pinned.nix;
 in
 {
   imports =
