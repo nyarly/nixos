@@ -5,7 +5,8 @@
     aspell
     aspellDicts.en
     bc
-    chromium
+    google-chrome
+    firefox
     exa
     # fish # until stable lands PR
     (fish.overrideAttrs (oldAttrs: { cmakeFlags = []; }))
