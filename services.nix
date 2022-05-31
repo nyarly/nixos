@@ -69,6 +69,16 @@
 
     postgresql = {
       enable = true;
+
+      package = pkgs.postgresql_12;
+
+      settings = pkgs.lib.mkForce {
+        log_connections = true;
+        log_statement = "all";
+        log_line_prefix = "%u:%d ";
+        max_connections = 500;
+      };
+
       authentication = ''
         local all all              trust
         host  all all 127.0.0.1/32 trust

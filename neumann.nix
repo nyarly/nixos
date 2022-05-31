@@ -73,7 +73,11 @@ in
     })
   ];
 
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    memoryPercent = 75;
+  };
+
   services = {
     vanta = let
       credentials = import modules/vanta/credentials.nix;
@@ -91,7 +95,7 @@ in
       enable = true;
       drivers = with pkgs; [
         brlaser
-        cups-brother-hl1110
+        #cups-brother-hl1110
         gutenprint
         #mfcl8690cdwlpr
       ];

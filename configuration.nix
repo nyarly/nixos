@@ -4,12 +4,9 @@
 
 { config, pkgs, ... }:
 
-let
-  unstableTarball = import ./pinned.nix;
-in
 {
   imports =
-  [ # Include the results of the hardware scan.
+  [
     ./hardware-configuration.nix
     ./local-configuration.nix
     ./shared.nix
@@ -27,14 +24,9 @@ in
 
   nixpkgs.config = {
     allowUnfree = true;
-
-    packageOverrides = pkgs: {
-      unstable = import unstableTarball {
-        config = config.nixpkgs.config;
-      };
-    };
   };
 
+  programs.dconf.enable = true;
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "18.03";

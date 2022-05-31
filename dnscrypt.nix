@@ -116,7 +116,7 @@ in
           "${localDnscryptAddress}:53"
         ];
 
-        fallback_resolver = "1.1.1.1:53";
+        #fallback_resolver = "1.1.1.1:53";
         ignore_system_dns = true;
 
         # Translated from default config

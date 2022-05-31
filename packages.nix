@@ -8,8 +8,8 @@
     google-chrome
     firefox
     exa
-    # fish # until stable lands PR
-    (fish.overrideAttrs (oldAttrs: { cmakeFlags = []; }))
+    fish # until stable lands PR
+    # (fish.overrideAttrs (oldAttrs: { cmakeFlags = []; }))
 
     manpages
     neovim
@@ -97,9 +97,9 @@
     xlsfonts
     xorg.xkill
     xclip
-    primus
+    #primus
     glxinfo
-    zoom-us #ick but needed sometimes
+    zoom-us
     hicolor-icon-theme
     alacritty
   ];
